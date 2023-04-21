@@ -1,4 +1,4 @@
-package com.kimblue.auth.global.base;
+package com.kimblue.auth.api.global.base;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

@@ -1,6 +1,6 @@
-package com.kimblue.auth.global.base;
+package com.kimblue.auth.api.global.base;
 
-import com.kimblue.auth.global.common.Result;
+import com.kimblue.auth.api.global.common.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
