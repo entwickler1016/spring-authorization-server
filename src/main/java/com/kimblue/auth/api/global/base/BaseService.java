@@ -1,8 +1,11 @@
 package com.kimblue.auth.api.global.base;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.Optional;
 
+@Transactional(readOnly = true)
 public interface BaseService<T> {
 
     /**
@@ -23,6 +26,7 @@ public interface BaseService<T> {
      * @param t (excluded id)
      * @return Optional Row to result of insert
      */
+    @Transactional
     Optional<T> insert(T t);
 
     /**
@@ -30,6 +34,7 @@ public interface BaseService<T> {
      * @param t (included id)
      * @return Optional Row to result of update
      */
+    @Transactional
     Optional<T> update(T t);
 
     /**
@@ -37,5 +42,6 @@ public interface BaseService<T> {
      * @param id
      * @return Boolean to result of delete (after findById)
      */
+    @Transactional
     boolean delete(String id);
 }

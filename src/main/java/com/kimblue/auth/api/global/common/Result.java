@@ -3,6 +3,7 @@ package com.kimblue.auth.api.global.common;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.http.HttpStatus;
 
 @Setter
 @Getter
@@ -31,8 +32,8 @@ public class Result {
         this.page = page;
     }
 
-    public Result(int status){
-        this.status = status;
-        this.message = HttpStatusEnum.getCodeByStatus(status);
+    public Result(HttpStatus httpStatus){
+        this.status = httpStatus.value();
+        this.message = httpStatus.getReasonPhrase();
     }
 }
