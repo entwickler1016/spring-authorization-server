@@ -1,6 +1,6 @@
 package com.kimblue.auth.entity;
 
-import com.kimblue.auth.global.BaseTime;
+import com.kimblue.auth.global.base.BaseTime;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
