@@ -1,6 +1,6 @@
 package com.kimblue.auth.entity;
 
-import com.kimblue.auth.global.BaseTime;
+import com.kimblue.auth.global.base.BaseTime;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

@@ -1,4 +1,4 @@
-package com.kimblue.auth.global;
+package com.kimblue.auth.global.base;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
