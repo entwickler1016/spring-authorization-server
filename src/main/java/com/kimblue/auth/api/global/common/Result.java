@@ -1,4 +1,4 @@
-package com.kimblue.auth.global.common;
+package com.kimblue.auth.api.global.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
