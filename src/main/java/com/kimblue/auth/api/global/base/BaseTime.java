@@ -1,6 +1,5 @@
 package com.kimblue.auth.api.global.base;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
@@ -17,12 +16,13 @@ import java.time.LocalDateTime;
 public class BaseTime {
 
     @Column(nullable=false)
-    @JsonIgnore
     private boolean deleted = Boolean.FALSE;
 
     @CreationTimestamp
-    private LocalDateTime created;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @UpdateTimestamp
-    private LocalDateTime modified;
+    @Column(name = "modified_at")
+    private LocalDateTime modifiedAt;
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -27,41 +28,43 @@ public class AuthorityService implements BaseService<AuthorityDTO> {
         List<AuthorityDTO> result = entity.stream()
                 .map(authority -> modelMapper.map(authority, AuthorityDTO.class))
                 .toList();
+
         return result;
     }
 
     @Override
-    public Optional<AuthorityDTO> findById(String id) {
+    public AuthorityDTO findById(String id) {
 
         Optional<Authority> entity = authorityRepository.findById(id);
 
-        AuthorityDTO dto = entity
+        AuthorityDTO result = entity
                 .map(authority -> modelMapper.map(authority, AuthorityDTO.class))
                 .orElseThrow(EntityNotFoundException::new);
 
-        Optional<AuthorityDTO> result = Optional.ofNullable(dto);
         return result;
     }
 
     @Override
-    public Optional<AuthorityDTO> insert(AuthorityDTO dto) {
+    public AuthorityDTO insert(AuthorityDTO dto) {
 
         Authority entity = modelMapper.map(dto, Authority.class);
 
         authorityRepository.save(entity);
 
-        Optional<AuthorityDTO> result = findById(String.valueOf(entity.getAuthorityId()));
+        AuthorityDTO result = findById(String.valueOf(entity.getAuthorityId()));
+
         return result;
     }
 
     @Override
-    public Optional<AuthorityDTO> update(AuthorityDTO dto) {
+    public AuthorityDTO update(AuthorityDTO dto) {
 
         Authority entity = modelMapper.map(dto, Authority.class);
 
         authorityRepository.save(entity);
 
-        Optional<AuthorityDTO> result = findById(String.valueOf(entity.getAuthorityId()));
+        AuthorityDTO result = findById(String.valueOf(entity.getAuthorityId()));
+
         return result;
     }
 
@@ -70,7 +73,8 @@ public class AuthorityService implements BaseService<AuthorityDTO> {
 
         authorityRepository.deleteById(id);
 
-        boolean result = findById(id).isEmpty();
+        boolean result = Optional.ofNullable(findById(id)).isEmpty();
+
         return result;
     }
 }

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -28,13 +29,13 @@ public class Authority extends BaseTime {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(name = "authority_id", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
-    private UUID authorityId;
+    @Column(name = "authority_id", updatable = false, nullable = false,  unique = true, columnDefinition = "VARCHAR(36)")
+    private String authorityId;
 
     @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(name = "description", length = 300)
+    @Column(name = "description")
     private String description;
 
     @ManyToMany(mappedBy = "authorities")

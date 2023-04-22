@@ -1,5 +1,6 @@
 package com.kimblue.auth.api.global.base;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -12,6 +13,7 @@ public interface BaseService<T> {
      * Returns the List
      * @return List<T></T>
      */
+    @Transactional(readOnly = true)
     List<T> findAll();
 
     /**
@@ -19,7 +21,8 @@ public interface BaseService<T> {
      * @param id
      * @return Optional Row
      */
-    Optional<T> findById(String id);
+    @Transactional(readOnly = true)
+    T findById(String id);
 
     /**
      * Returns the Row
@@ -27,7 +30,7 @@ public interface BaseService<T> {
      * @return Optional Row to result of insert
      */
     @Transactional
-    Optional<T> insert(T t);
+    T insert(T t);
 
     /**
      * Returns the Row
@@ -35,7 +38,7 @@ public interface BaseService<T> {
      * @return Optional Row to result of update
      */
     @Transactional
-    Optional<T> update(T t);
+    T update(T t);
 
     /**
      * Returns the Boolean

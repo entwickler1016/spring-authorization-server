@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class CustomExceptionHandler {
 
-    @ExceptionHandler(NullPointerException.class)
+    /*@ExceptionHandler(NullPointerException.class)
     public ResponseEntity<Result> nullPointerException(NullPointerException ex) {
         Result result = new Result(HttpStatus.INTERNAL_SERVER_ERROR);
         return new ResponseEntity<Result>(result, HttpStatusCode.valueOf(result.getStatus()));
-    }
+    }*/
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<Result> entityNotFoundException(EntityNotFoundException ex) {

@@ -21,12 +21,14 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
+    //implementation "org.springframework.security:spring-security-oauth2-authorization-server:1.0.2"
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
+    implementation 'org.hibernate:hibernate-validator:8.0.0.Final'
     implementation 'org.modelmapper:modelmapper:3.1.1'
 
 

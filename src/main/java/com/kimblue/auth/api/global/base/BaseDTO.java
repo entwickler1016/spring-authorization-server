@@ -1,9 +1,13 @@
 package com.kimblue.auth.api.global.base;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
+@Getter
+@Setter
 public class BaseDTO {
 
     private boolean deleted;
