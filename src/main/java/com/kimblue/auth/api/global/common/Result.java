@@ -15,19 +15,19 @@ public class Result {
     private Object page;
 
     public Result() {
-        this.status = HttpStatusEnum.OK.getStatus();
-        this.message = HttpStatusEnum.OK.getCode();
+        this.status = HttpStatus.OK.value();
+        this.message = HttpStatus.OK.getReasonPhrase();
     }
 
     public Result(Object data) {
-        this.status = HttpStatusEnum.OK.getStatus();
-        this.message = HttpStatusEnum.OK.getCode();
+        this.status = HttpStatus.OK.value();
+        this.message = HttpStatus.OK.getReasonPhrase();
         this.data = data;
     }
 
     public Result(Object data, Object page) {
-        this.status = HttpStatusEnum.OK.getStatus();
-        this.message = HttpStatusEnum.OK.getCode();
+        this.status = HttpStatus.OK.value();
+        this.message = HttpStatus.OK.getReasonPhrase();
         this.data = data;
         this.page = page;
     }

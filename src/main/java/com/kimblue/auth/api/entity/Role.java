@@ -1,6 +1,6 @@
 package com.kimblue.auth.api.entity;
 
-import com.kimblue.auth.api.global.base.BaseTime;
+import com.kimblue.auth.api.global.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +23,7 @@ import java.util.UUID;
     indexes = {@Index(columnList = "deleted")}
 )
 @SQLDelete(sql = "UPDATE role SET deleted = true WHERE role_id = ?")
-public class Role extends BaseTime {
+public class Role extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "uuid2")

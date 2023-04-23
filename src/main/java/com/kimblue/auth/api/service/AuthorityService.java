@@ -8,7 +8,6 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,6 +19,7 @@ public class AuthorityService implements BaseService<AuthorityDTO> {
     private final ModelMapper modelMapper;
     private final AuthorityRepository authorityRepository;
 
+
     @Override
     public List<AuthorityDTO> findAll() {
 
@@ -28,7 +28,6 @@ public class AuthorityService implements BaseService<AuthorityDTO> {
         List<AuthorityDTO> result = entity.stream()
                 .map(authority -> modelMapper.map(authority, AuthorityDTO.class))
                 .toList();
-
         return result;
     }
 
@@ -40,7 +39,6 @@ public class AuthorityService implements BaseService<AuthorityDTO> {
         AuthorityDTO result = entity
                 .map(authority -> modelMapper.map(authority, AuthorityDTO.class))
                 .orElseThrow(EntityNotFoundException::new);
-
         return result;
     }
 
@@ -48,33 +46,30 @@ public class AuthorityService implements BaseService<AuthorityDTO> {
     public AuthorityDTO insert(AuthorityDTO dto) {
 
         Authority entity = modelMapper.map(dto, Authority.class);
-
         authorityRepository.save(entity);
 
-        AuthorityDTO result = findById(String.valueOf(entity.getAuthorityId()));
-
+        AuthorityDTO result = modelMapper.map(entity, AuthorityDTO.class);
         return result;
     }
 
     @Override
     public AuthorityDTO update(AuthorityDTO dto) {
 
-        Authority entity = modelMapper.map(dto, Authority.class);
+        AuthorityDTO tmp = Optional.ofNullable(findById(dto.getAuthorityId())).orElseThrow(EntityNotFoundException::new);
 
+        Authority entity = modelMapper.map(dto, Authority.class);
         authorityRepository.save(entity);
 
-        AuthorityDTO result = findById(String.valueOf(entity.getAuthorityId()));
-
+        AuthorityDTO result = modelMapper.map(entity, AuthorityDTO.class);
         return result;
     }
 
     @Override
-    public boolean delete(String id) {
+    public void delete(String id) {
+
+        AuthorityDTO tmp = Optional.ofNullable(findById(id)).orElseThrow(EntityNotFoundException::new);
 
         authorityRepository.deleteById(id);
 
-        boolean result = Optional.ofNullable(findById(id)).isEmpty();
-
-        return result;
     }
 }

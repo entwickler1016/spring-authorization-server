@@ -1,6 +1,6 @@
 package com.kimblue.auth.api.entity;
 
-import com.kimblue.auth.api.global.base.BaseTime;
+import com.kimblue.auth.api.global.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,11 +8,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.SQLDelete;
-import org.hibernate.annotations.Where;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -24,7 +23,7 @@ import java.util.UUID;
     indexes = {@Index(columnList = "deleted")}
 )
 @SQLDelete(sql = "UPDATE authority SET deleted = true WHERE authority_id = ?")
-public class Authority extends BaseTime {
+public class Authority extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "uuid2")

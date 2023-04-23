@@ -4,6 +4,10 @@ import com.kimblue.auth.api.dto.AuthorityDTO;
 import com.kimblue.auth.api.global.base.BaseController;
 import com.kimblue.auth.api.global.common.Result;
 import com.kimblue.auth.api.service.AuthorityService;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,18 +41,19 @@ public class AuthorityController implements BaseController<AuthorityDTO> {
     }
 
     @Override
-    public ResponseEntity<Result> insert(AuthorityDTO authorityDTO) {
+    public ResponseEntity<Result> insert(AuthorityDTO dto) {
 
-        AuthorityDTO result = authorityService.insert(authorityDTO);
+        AuthorityDTO result = authorityService.insert(dto);
 
         return ResponseEntity.ok(new Result(result));
     }
 
     @Override
-    public ResponseEntity<Result> update(String id, AuthorityDTO authorityDTO) {
+    public ResponseEntity<Result> update(String id, AuthorityDTO dto) {
 
-        authorityDTO.setAuthorityId(id);
-        AuthorityDTO result = authorityService.update(authorityDTO);
+        dto.setAuthorityId(id);
+
+        AuthorityDTO result = authorityService.update(dto);
 
         return ResponseEntity.ok(new Result(result));
     }
@@ -56,8 +61,8 @@ public class AuthorityController implements BaseController<AuthorityDTO> {
     @Override
     public ResponseEntity<Result> delete(String id) {
 
-        boolean result = authorityService.delete(id);
+        authorityService.delete(id);
 
-        return ResponseEntity.ok(new Result(result));
+        return ResponseEntity.ok(new Result());
     }
 }

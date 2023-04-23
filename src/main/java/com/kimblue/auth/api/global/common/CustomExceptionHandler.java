@@ -18,7 +18,7 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<Result> entityNotFoundException(EntityNotFoundException ex) {
-        Result result = new Result(HttpStatus.NOT_FOUND);
-        return new ResponseEntity<Result>(result, HttpStatusCode.valueOf(result.getStatus()));
+        Result result = new Result(HttpStatus.NO_CONTENT);
+        return new ResponseEntity<Result>(result, HttpStatusCode.valueOf(HttpStatus.OK.value()));
     }
 }

@@ -27,7 +27,7 @@ public interface BaseService<T> {
     /**
      * Returns the Row
      * @param t (excluded id)
-     * @return Optional Row to result of insert
+     * @return ID to result of insert
      */
     @Transactional
     T insert(T t);
@@ -46,5 +46,5 @@ public interface BaseService<T> {
      * @return Boolean to result of delete (after findById)
      */
     @Transactional
-    boolean delete(String id);
+    void delete(String id);
 }
