@@ -30,7 +30,7 @@ public class User extends BaseEntity {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "user_id", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
-    private UUID userId;
+    private String userId;
 
     @Column(name = "email", unique = true, nullable = false)
     private String email;
