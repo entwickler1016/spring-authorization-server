@@ -29,7 +29,7 @@ public class Role extends BaseEntity {
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "org.hibernate.id.UUIDGenerator")
     @Column(name = "role_id", updatable = false, nullable = false, columnDefinition = "VARCHAR(36)")
-    private UUID roleId;
+    private String roleId;
 
     @Column(name = "name", nullable = false)
     private String name;
