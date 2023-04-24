@@ -1,9 +1,9 @@
 package com.kimblue.auth.api.web;
 
-import com.kimblue.auth.api.dto.AuthorityDTO;
+import com.kimblue.auth.api.dto.UserDTO;
 import com.kimblue.auth.api.global.base.BaseController;
 import com.kimblue.auth.api.global.common.Result;
-import com.kimblue.auth.api.service.AuthorityService;
+import com.kimblue.auth.api.service.UserService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,18 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Tag(name = "Authority", description = "권한")
+@Tag(name = "User", description = "사용자")
 @RestController
-@RequestMapping("authority")
+@RequestMapping("user")
 @RequiredArgsConstructor
-public class AuthorityController implements BaseController<AuthorityDTO> {
+public class UserController implements BaseController<UserDTO> {
 
-    private final AuthorityService authorityService;
+    private final UserService userService;
 
     @Override
     public ResponseEntity<Result> findAll() {
 
-        List<AuthorityDTO> result = authorityService.findAll();
+        List<UserDTO> result = userService.findAll();
 
         return ResponseEntity.ok(new Result(result));
     }
@@ -31,25 +31,25 @@ public class AuthorityController implements BaseController<AuthorityDTO> {
     @Override
     public ResponseEntity<Result> findById(String id) {
 
-        AuthorityDTO result = authorityService.findById(id);
+        UserDTO result = userService.findById(id);
 
         return ResponseEntity.ok(new Result(result));
     }
 
     @Override
-    public ResponseEntity<Result> insert(AuthorityDTO dto) {
+    public ResponseEntity<Result> insert(UserDTO dto) {
 
-        AuthorityDTO result = authorityService.insert(dto);
+        UserDTO result = userService.insert(dto);
 
         return ResponseEntity.ok(new Result(result));
     }
 
     @Override
-    public ResponseEntity<Result> update(String id, AuthorityDTO dto) {
+    public ResponseEntity<Result> update(String id, UserDTO dto) {
 
-        dto.setAuthorityId(id);
+        dto.setUserId(id);
 
-        AuthorityDTO result = authorityService.update(dto);
+        UserDTO result = userService.update(dto);
 
         return ResponseEntity.ok(new Result(result));
     }
@@ -57,7 +57,7 @@ public class AuthorityController implements BaseController<AuthorityDTO> {
     @Override
     public ResponseEntity<Result> delete(String id) {
 
-        authorityService.delete(id);
+        userService.delete(id);
 
         return ResponseEntity.ok(new Result());
     }
